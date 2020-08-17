@@ -2,7 +2,7 @@ package com.sanix.springBlog.shared.dto;
 
 import java.io.Serializable;
 
-public class userDto implements Serializable {
+public class UserDto implements Serializable {
     private static final long serialVersionUID=4865903039190150223L;
     private long id;
     private String userId;

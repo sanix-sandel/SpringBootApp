@@ -1,7 +1,9 @@
 package com.sanix.springBlog.ui.controller;
 
+import com.sanix.springBlog.shared.dto.UserDto;
 import com.sanix.springBlog.ui.model.request.UserDetailsRequestModel;
 import com.sanix.springBlog.ui.model.response.UserRest;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +17,15 @@ public class UserController {
 
     @PostMapping
     public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails){
-        return null;
+        UserRest returnValue=new UserRest();
+
+        UserDto userDto=new UserDto();
+        BeanUtils.copyProperties(userDetails, userDto);
+
+        UserDto createdUser=userService.createUser(userDto);
+        BeanUtils.copyProperties(createdUser, returnValue);
+
+        return returValue;
     }
 
     @PutMapping
