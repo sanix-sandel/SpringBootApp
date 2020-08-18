@@ -52,7 +52,7 @@ public class UserEntity implements Serializable {
         this.lastName = lastName;
     }
 
-    @Column(nullable=false, length=120, unique=true)
+
     public String getEmail() {
         return email;
     }
@@ -88,7 +88,7 @@ public class UserEntity implements Serializable {
     @Column(nullable=false, length=50)
     private String lastName;
 
-    @Column(nullable=false, length=100)
+    @Column(nullable=false, length=100, unique=true)
     private String email;
 
     @Column(nullable=false)
