@@ -6,7 +6,9 @@ import com.sanix.springBlog.service.UserService;
 import com.sanix.springBlog.shared.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
