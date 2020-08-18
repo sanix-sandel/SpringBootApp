@@ -23,10 +23,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setEncryptedPassword("test");
         userEntity.setUserId("testUserId");
 
-
         UserEntity storeUserDetails=userRepository.save(userEntity);
-
-
 
         UserDto returnValue=new UserDto();
         BeanUtils.copyProperties(storeUserDetails, returnValue);
