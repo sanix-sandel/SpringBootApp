@@ -3,6 +3,7 @@ package com.sanix.springBlog.service.impl;
 import com.sanix.springBlog.UserRepository;
 import com.sanix.springBlog.io.entity.UserEntity;
 import com.sanix.springBlog.service.UserService;
+import com.sanix.springBlog.shared.Utils;
 import com.sanix.springBlog.shared.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    Utils utils;
+
     @Override
     public UserDto createUser(UserDto user){
 
@@ -22,8 +26,10 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity=new UserEntity();
         BeanUtils.copyProperties(user, userEntity);
 
+        String publicUserId=utils.generateUserId(30);
+        userEntity.setUserId(publicUserId);
         userEntity.setEncryptedPassword("test");
-        userEntity.setUserId("testUserId");
+
 
         UserEntity storeUserDetails=userRepository.save(userEntity);
 
