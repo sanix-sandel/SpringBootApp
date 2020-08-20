@@ -1,4 +1,4 @@
-package com.sanix.springBlog;
+package com.sanix.springBlog.io.repositories;
 
 import com.sanix.springBlog.io.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;

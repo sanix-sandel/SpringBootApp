@@ -1,6 +1,6 @@
 package com.sanix.springBlog.service.impl;
 
-import com.sanix.springBlog.UserRepository;
+import com.sanix.springBlog.io.repositories.UserRepository;
 import com.sanix.springBlog.io.entity.UserEntity;
 import com.sanix.springBlog.service.UserService;
 import com.sanix.springBlog.shared.Utils;
@@ -47,6 +47,18 @@ public class UserServiceImpl implements UserService {
 
         return returnValue;
     };
+
+    @Override
+    public UserDto getUser(String email){
+        UserEntity userEntity=userRepository.findByEmail(email);
+
+        if(userEntity==null) throw new UsernameNotFoundException(email);
+
+        UserDto returnValue=new UserDto();
+        BeanUtils.copyProperties(userEntity, returnValue);
+        return returnValue;
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
